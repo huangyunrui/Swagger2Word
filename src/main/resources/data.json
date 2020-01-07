@@ -1,0 +1,1884 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "用于标签信息实时监控",
+    "version": "1.0",
+    "title": "标签服务RESTful API"
+  },
+  "host": "10.42.69.227:11341",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "事件信息接口",
+      "description": "Event Controller"
+    },
+    {
+      "name": "标签信息接口",
+      "description": "Labelinfo Controller"
+    },
+    {
+      "name": "资源标签接口",
+      "description": "Markinfo Controller"
+    },
+    {
+      "name": "事件标签关联信息接口",
+      "description": "Event Label Map Controller"
+    },
+    {
+      "name": "标签类目接口",
+      "description": "Category Controller"
+    }
+  ],
+  "paths": {
+    "/monitor/label/category/addCategory": {
+      "post": {
+        "tags": [
+          "标签类目接口"
+        ],
+        "summary": "添加标签类目",
+        "description": "添加标签类目",
+        "operationId": "addLabelinfoUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/标签类目"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/category/deleteCategory/{id}": {
+      "delete": {
+        "tags": [
+          "标签类目接口"
+        ],
+        "summary": "删除标签类目",
+        "description": "删除标签类目",
+        "operationId": "deleteCatetoryUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "类目编号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/monitor/label/category/editCategory": {
+      "put": {
+        "tags": [
+          "标签类目接口"
+        ],
+        "summary": "修改标签类目",
+        "description": "修改标签类目",
+        "operationId": "editCategoryUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/标签类目"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/category/getById/{id}": {
+      "get": {
+        "tags": [
+          "标签类目接口"
+        ],
+        "summary": "通过id查询标签信息",
+        "description": "通过id查询标签类目",
+        "operationId": "getByIdUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "类目编号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/category/getCategoryPage": {
+      "get": {
+        "tags": [
+          "标签类目接口"
+        ],
+        "summary": "分页查询标签类目列表",
+        "description": "分页查询标签类目列表",
+        "operationId": "getCategoryPageUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "tcName",
+            "in": "query",
+            "description": "类目名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tcDescribe",
+            "in": "query",
+            "description": "类目描述",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/category/getList": {
+      "get": {
+        "tags": [
+          "标签类目接口"
+        ],
+        "summary": "查询所有类目信息",
+        "description": "查询所有类目信息",
+        "operationId": "getListUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/event/addEvent": {
+      "post": {
+        "tags": [
+          "事件信息接口"
+        ],
+        "summary": "添加事件信息",
+        "description": "添加事件信息",
+        "operationId": "addEventUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/事件信息"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/event/deleteEvent/{id}": {
+      "delete": {
+        "tags": [
+          "事件信息接口"
+        ],
+        "summary": "删除事件",
+        "description": "删除事件",
+        "operationId": "deleteEventUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "事件编号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/monitor/label/event/editEvent": {
+      "put": {
+        "tags": [
+          "事件信息接口"
+        ],
+        "summary": "修改事件信息",
+        "description": "修改事件信息",
+        "operationId": "editEventUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/事件信息"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/event/editStatus": {
+      "put": {
+        "tags": [
+          "事件信息接口"
+        ],
+        "summary": "修改事件状态",
+        "description": "修改事件状态",
+        "operationId": "editStatusUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/事件信息"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/event/getById/{id}": {
+      "get": {
+        "tags": [
+          "事件信息接口"
+        ],
+        "summary": "通过id查询事件",
+        "description": "通过id查询事件",
+        "operationId": "getByIdUsingGET_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "事件编号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/event/getEventPage": {
+      "get": {
+        "tags": [
+          "事件信息接口"
+        ],
+        "summary": "分页查询事件列表",
+        "description": "分页查询事件列表",
+        "operationId": "getEventPageUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "teName",
+            "in": "query",
+            "description": "事件名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "teDescribe",
+            "in": "query",
+            "description": "事件描述",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "teStatus",
+            "in": "query",
+            "description": "事件状态 1:启用 0:停止",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/eventLabelMap/addEventLabelMap": {
+      "post": {
+        "tags": [
+          "事件标签关联信息接口"
+        ],
+        "summary": "增加事件标签关联信息",
+        "description": "增加事件标签关联信息",
+        "operationId": "addEventLabelMapUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/事件标签关系"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/eventLabelMap/deleteEventLabelMap/{id}": {
+      "delete": {
+        "tags": [
+          "事件标签关联信息接口"
+        ],
+        "summary": "删除事件标签关联信息",
+        "description": "删除事件标签关联信息",
+        "operationId": "deleteEventLabelMapUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "主键",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/monitor/label/eventLabelMap/editEventLabelMap": {
+      "put": {
+        "tags": [
+          "事件标签关联信息接口"
+        ],
+        "summary": "修改事件标签关联信息",
+        "description": "修改事件标签关联信息",
+        "operationId": "editEventLabelMapUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/事件标签关系"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/eventLabelMap/getById/{id}": {
+      "get": {
+        "tags": [
+          "事件标签关联信息接口"
+        ],
+        "summary": "通过id查询事件标签关联信息",
+        "description": "通过id查询事件标签关联信息",
+        "operationId": "getByIdUsingGET_2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "主键",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/eventLabelMap/getEventLabelMapPage": {
+      "get": {
+        "tags": [
+          "事件标签关联信息接口"
+        ],
+        "summary": "分页查询事件标签信息列表",
+        "description": "分页查询事件标签信息列表",
+        "operationId": "getEventLabelMapPageUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "teId",
+            "in": "query",
+            "description": "事件编号",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tliId",
+            "in": "query",
+            "description": "标签主键",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tliName",
+            "in": "query",
+            "description": "标签名称",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/labelinfo/addLabelinfo": {
+      "post": {
+        "tags": [
+          "标签信息接口"
+        ],
+        "summary": "添加标签信息",
+        "description": "添加标签信息",
+        "operationId": "addLabelinfoUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/标签信息"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/labelinfo/deleteLabelinfo/{id}": {
+      "delete": {
+        "tags": [
+          "标签信息接口"
+        ],
+        "summary": "删除标签类型",
+        "description": "根据id删除标签",
+        "operationId": "deleteLabelinfoUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "标签编号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/monitor/label/labelinfo/editLabelinfo": {
+      "put": {
+        "tags": [
+          "标签信息接口"
+        ],
+        "summary": "修改标签信息",
+        "description": "修改标签信息",
+        "operationId": "editLabelinfoUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/标签信息"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/labelinfo/editStatus": {
+      "put": {
+        "tags": [
+          "标签信息接口"
+        ],
+        "summary": "修改标签状态",
+        "description": "修改标签状态",
+        "operationId": "editStatusUsingPUT_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/标签信息"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/labelinfo/getById/{id}": {
+      "get": {
+        "tags": [
+          "标签信息接口"
+        ],
+        "summary": "通过id查询标签信息",
+        "description": "单条查询",
+        "operationId": "getByIdUsingGET_3",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "标签编号",
+            "required": true,
+            "type": "ref"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/labelinfo/getLabelinfoByIds": {
+      "get": {
+        "tags": [
+          "标签信息接口"
+        ],
+        "summary": "标签批量查询",
+        "description": "根据批量主键查询",
+        "operationId": "getLabelinfoByIdsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "主键编号列表",
+            "required": true,
+            "type": "ref"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/labelinfo/getLabelinfoByTcId/{tcId}": {
+      "get": {
+        "tags": [
+          "标签信息接口"
+        ],
+        "summary": "根据类目查询所有标签",
+        "description": "根据类目查询所有标签",
+        "operationId": "getLabelinfoByTcIdUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "tcId",
+            "in": "path",
+            "description": "类目编号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/labelinfo/getLabelinfoPage": {
+      "get": {
+        "tags": [
+          "标签信息接口"
+        ],
+        "summary": "分页查询标签信息列表",
+        "description": "分页查询标签信息列表",
+        "operationId": "getLabelinfoPageUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "tcId",
+            "in": "query",
+            "description": "类目主键",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tliName",
+            "in": "query",
+            "description": "标签名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tliStatus",
+            "in": "query",
+            "description": "标签状态  1：启用，0：不启用",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "tliDescribe",
+            "in": "query",
+            "description": "标签描述",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/markinfo/addMarkinfo": {
+      "post": {
+        "tags": [
+          "资源标签接口"
+        ],
+        "summary": "增加标记信息",
+        "description": "增加标记信息",
+        "operationId": "addMarkinfoUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MarkinfoDO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/markinfo/deleteMarkinfo/{id}": {
+      "delete": {
+        "tags": [
+          "资源标签接口"
+        ],
+        "summary": "删除标记",
+        "description": "删除标记",
+        "operationId": "deleteMarkinfoUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "编辑编号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/monitor/label/markinfo/editMarkinfo": {
+      "put": {
+        "tags": [
+          "资源标签接口"
+        ],
+        "summary": "修改标记信息",
+        "description": "修改标记信息",
+        "operationId": "editMarkinfoUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "req",
+            "description": "req",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MarkinfoDO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/markinfo/getById/{id}": {
+      "get": {
+        "tags": [
+          "资源标签接口"
+        ],
+        "summary": "删除标记",
+        "description": "删除标记",
+        "operationId": "getByIdUsingGET_4",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "编辑编号",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/markinfo/getMarkinfoBySource": {
+      "get": {
+        "tags": [
+          "资源标签接口"
+        ],
+        "summary": "根据资源查询所有标签信息",
+        "description": "根据资源查询所有标签信息",
+        "operationId": "getMarkinfoBySourceUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sourceId",
+            "in": "query",
+            "description": "资源编号",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sourceType",
+            "in": "query",
+            "description": "资源类型",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/monitor/label/markinfo/getMarkinfoPage": {
+      "get": {
+        "tags": [
+          "资源标签接口"
+        ],
+        "summary": "分页查询标记信息列表",
+        "description": "分页查询标记信息列表",
+        "operationId": "getMarkinfoPageUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "tliId",
+            "in": "query",
+            "description": "标签主键",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tliName",
+            "in": "query",
+            "description": "标签名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tmiSourceid",
+            "in": "query",
+            "description": "资源id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tmiSourcetype",
+            "in": "query",
+            "description": "资源类型,通道:1，设备:2",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "MarkinfoDO": {
+      "type": "object",
+      "properties": {
+        "tliId": {
+          "type": "string",
+          "description": "标签主键"
+        },
+        "tmiId": {
+          "type": "string",
+          "description": "标记主键"
+        },
+        "tmiSourceid": {
+          "type": "string",
+          "description": "资源主键"
+        },
+        "tmiSourcetype": {
+          "type": "string",
+          "description": "资源类型,1:通道，2:设备"
+        }
+      }
+    },
+    "Result": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "type": "object"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "事件信息": {
+      "type": "object",
+      "properties": {
+        "teDescribe": {
+          "type": "string",
+          "description": "事件描述"
+        },
+        "teId": {
+          "type": "string",
+          "description": "事件主键"
+        },
+        "teName": {
+          "type": "string",
+          "description": "事件名称"
+        },
+        "teStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "事件状态：1:启用,0:停止"
+        }
+      },
+      "description": "事件信息"
+    },
+    "事件标签关系": {
+      "type": "object",
+      "properties": {
+        "elmId": {
+          "type": "string",
+          "description": "主键ID"
+        },
+        "teId": {
+          "type": "string",
+          "description": "事件编号"
+        },
+        "tliId": {
+          "type": "string",
+          "description": "标签编号"
+        }
+      }
+    },
+    "标签信息": {
+      "type": "object",
+      "properties": {
+        "tcId": {
+          "type": "string",
+          "description": "类目主键"
+        },
+        "tliDescribe": {
+          "type": "string",
+          "description": "标签描述"
+        },
+        "tliId": {
+          "type": "string",
+          "description": "标签主键"
+        },
+        "tliName": {
+          "type": "string",
+          "description": "标签名称"
+        },
+        "tliStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "标签状态  1：启用，0：不启用"
+        }
+      }
+    },
+    "标签类目": {
+      "type": "object",
+      "properties": {
+        "tcDescribe": {
+          "type": "string",
+          "description": "类目描述"
+        },
+        "tcId": {
+          "type": "string",
+          "description": "类目ID"
+        },
+        "tcName": {
+          "type": "string",
+          "description": "类目名称"
+        }
+      },
+      "description": "标签类目"
+    }
+  }
+}
